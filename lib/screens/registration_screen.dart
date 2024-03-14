@@ -15,6 +15,7 @@ class _RegistrationPageState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Color(0xFFEFF2F1),
       body: Center(
         child: SingleChildScrollView(
           child: Column(children: [

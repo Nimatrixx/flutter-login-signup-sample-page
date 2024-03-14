@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Color(0xFFEFF2F1),
       body: Center(
         child: SingleChildScrollView(
           child: Column(children: [
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: EdgeInsets.only(top: 8.0),
             ),
             Padding(
-              padding: EdgeInsets.only(right: size.width * 0.38, bottom: 20.0),
+              padding: EdgeInsets.only(right: size.width * 0.38, bottom: 10.0),
               child: TextButton(
                 onPressed: () {},
                 child: Text(
