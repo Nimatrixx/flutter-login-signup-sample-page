@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/components/custom_text_field.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
-import 'package:flutter_auth/screens/registration_screen.dart';
+import 'package:flutter_auth/screens/login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationPageState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,37 +44,17 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 50.0),
             CustomTextField(
               width: size.width * 0.8,
-              hint: 'Username',
+              hint: 'Email',
               onChanged: (v) {},
-            ),
-            CustomTextField(
-              width: size.width * 0.8,
-              hint: 'Password',
-              password: true,
-              onChanged: (v) {},
-              padding: EdgeInsets.only(top: 8.0),
-            ),
-            Padding(
-              padding: EdgeInsets.only(right: size.width * 0.38, bottom: 20.0),
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'I forgot my password',
-                  style: TextStyle(
-                    fontFamily: 'Satoshi',
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
             ),
             Hero(
-              tag: 'login',
+              tag: 'signup',
               child: RoundedButton(
                 onPressed: () {},
                 width: size.width * 0.8,
                 height: size.height * 0.08,
                 color: Colors.deepPurple[200],
-                text: 'Login',
+                text: 'Next',
                 textColor: Colors.deepPurple[900],
               ),
             ),
@@ -82,16 +62,16 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Don\'t have an account yet?',
+                  'Already have an account?',
                   style: TextStyle(fontFamily: 'Satoshi'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => RegistrationScreen()));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: Text(
-                    'Sign Up',
+                    'Login',
                     style: TextStyle(
                       fontFamily: 'Satoshi',
                       color: Colors.blue,

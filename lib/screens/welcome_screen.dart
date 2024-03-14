@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
+import 'package:flutter_auth/screens/registration_screen.dart';
 
 import 'login_screen.dart';
 
@@ -37,7 +38,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     controller.addListener(() {
       setState(() {});
-      print(controller.value);
     });
   }
 
@@ -69,20 +69,29 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         fit: BoxFit.contain,
                       ),
                     ),
-                    AnimatedTextKit(
-                      totalRepeatCount: 1,
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          'BeCoder',
-                          textStyle: TextStyle(
-                            color: Colors.deepPurple,
-                            fontSize: size.height * 0.05,
-                            fontFamily: 'Satoshi',
+                    showButtons
+                        ? DefaultTextStyle(
+                            style: TextStyle(
+                              color: Colors.deepPurple,
+                              fontSize: size.height * 0.05,
+                              fontFamily: 'Satoshi',
+                            ),
+                            child: Text('BeCoder'),
+                          )
+                        : AnimatedTextKit(
+                            totalRepeatCount: 1,
+                            animatedTexts: [
+                              TypewriterAnimatedText(
+                                'BeCoder',
+                                textStyle: TextStyle(
+                                  color: Colors.deepPurple,
+                                  fontSize: size.height * 0.05,
+                                  fontFamily: 'Satoshi',
+                                ),
+                                speed: Duration(milliseconds: 100),
+                              ),
+                            ],
                           ),
-                          speed: Duration(milliseconds: 100),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -103,13 +112,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
               if (showButtons)
-                RoundedButton(
-                  onPressed: () {},
-                  width: size.width * 0.8 * 2 * (1 - controller.value),
-                  height: size.height * 0.08,
-                  color: Colors.deepPurple[400],
-                  text: 'Sign Up',
-                  textColor: Colors.deepPurple[50],
+                Hero(
+                  tag: 'signup',
+                  child: RoundedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(CustomPageRoute(
+                          builder: (context) => RegistrationScreen()));
+                    },
+                    width: size.width * 0.8 * 2 * (1 - controller.value),
+                    height: size.height * 0.08,
+                    color: Colors.deepPurple[400],
+                    text: 'Sign Up',
+                    textColor: Colors.deepPurple[50],
+                  ),
                 ),
             ],
           ),
