@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 
+import 'login_screen.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -56,51 +58,59 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: size.height * (0.2 + controller.value / 10),
-                    child: Image(
-                      image: AssetImage('images/programming.png'),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  AnimatedTextKit(
-                    totalRepeatCount: 1,
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        'BeCoder',
-                        textStyle: TextStyle(
-                          color: Colors.deepPurple,
-                          fontSize: size.height * 0.05,
-                          fontFamily: 'Satoshi',
-                        ),
-                        speed: Duration(milliseconds: 100),
+              Hero(
+                tag: 'icon',
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: size.height * (0.2 + controller.value / 10),
+                      child: Image(
+                        image: AssetImage('images/programming.png'),
+                        fit: BoxFit.contain,
                       ),
-                    ],
-                  ),
-                  SizedBox(height: size.height * 0.4 * (1 - controller.value)),
-                  if (showButtons)
-                    RoundedButton(
-                      onPressed: () {},
-                      width: size.width * 0.8 * 2 * (1 - controller.value),
-                      height: size.height * 0.08,
-                      color: Colors.deepPurple[200],
-                      text: 'Login',
-                      textColor: Colors.deepPurple[900],
                     ),
-                  if (showButtons)
-                    RoundedButton(
-                      onPressed: () {},
-                      width: size.width * 0.8 * 2 * (1 - controller.value),
-                      height: size.height * 0.08,
-                      color: Colors.deepPurple[400],
-                      text: 'Sign Up',
-                      textColor: Colors.deepPurple[50],
-                    )
-                ],
+                    AnimatedTextKit(
+                      totalRepeatCount: 1,
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'BeCoder',
+                          textStyle: TextStyle(
+                            color: Colors.deepPurple,
+                            fontSize: size.height * 0.05,
+                            fontFamily: 'Satoshi',
+                          ),
+                          speed: Duration(milliseconds: 100),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
+              SizedBox(height: size.height * 0.4 * (1 - controller.value)),
+              if (showButtons)
+                Hero(
+                  tag: 'login',
+                  child: RoundedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          CustomPageRoute(builder: (context) => LoginScreen()));
+                    },
+                    width: size.width * 0.8 * 2 * (1 - controller.value),
+                    height: size.height * 0.08,
+                    color: Colors.deepPurple[200],
+                    text: 'Login',
+                    textColor: Colors.deepPurple[900],
+                  ),
+                ),
+              if (showButtons)
+                RoundedButton(
+                  onPressed: () {},
+                  width: size.width * 0.8 * 2 * (1 - controller.value),
+                  height: size.height * 0.08,
+                  color: Colors.deepPurple[400],
+                  text: 'Sign Up',
+                  textColor: Colors.deepPurple[50],
+                ),
             ],
           ),
         ),
