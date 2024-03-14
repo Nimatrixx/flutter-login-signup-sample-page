@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_auth/components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -81,51 +82,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                   SizedBox(height: size.height * 0.4 * (1 - controller.value)),
                   if (showButtons)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Material(
-                        color: Colors.deepPurple[200],
-                        borderRadius: BorderRadius.circular(8.0),
-                        elevation: 8.0,
-                        child: MaterialButton(
-                          minWidth:
-                              size.width * 0.8 * 2 * (1 - controller.value),
-                          height: size.height * 0.08,
-                          onPressed: () {},
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              fontFamily: 'Satoshi',
-                              color: Colors.deepPurple[900],
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
+                    RoundedButton(
+                      onPressed: () {},
+                      width: size.width * 0.8 * 2 * (1 - controller.value),
+                      height: size.height * 0.08,
+                      color: Colors.deepPurple[200],
+                      text: 'Login',
+                      textColor: Colors.deepPurple[900],
                     ),
                   if (showButtons)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Material(
-                        color: Colors.deepPurple[400],
-                        borderRadius: BorderRadius.circular(8.0),
-                        elevation: 8.0,
-                        child: MaterialButton(
-                          minWidth:
-                              size.width * 0.8 * 2 * (1 - controller.value),
-                          height: size.height * 0.08,
-                          onPressed: () {},
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontFamily: 'Satoshi',
-                              color: Colors.deepPurple[50],
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    RoundedButton(
+                      onPressed: () {},
+                      width: size.width * 0.8 * 2 * (1 - controller.value),
+                      height: size.height * 0.08,
+                      color: Colors.deepPurple[400],
+                      text: 'Sign Up',
+                      textColor: Colors.deepPurple[50],
+                    )
                 ],
               ),
             ],
@@ -138,16 +111,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
 class CustomPageRoute extends MaterialPageRoute {
   @override
-  Duration get transitionDuration => const Duration(seconds: 2);
+  Duration get transitionDuration => const Duration(milliseconds: 500);
 
   CustomPageRoute({builder}) : super(builder: builder);
 }
-
-// void navigate() async {
-//     await Future.delayed(Duration(seconds: 2));
-//     Navigator.of(context).push(
-//       CustomPageRoute(
-//         builder: (context) => AuthScreen(),
-//       ),
-//     );
-//   }
